@@ -1,5 +1,5 @@
 import { createClient } from 'redis';
-
+import { promisify } from 'util';
 
 class RedisClient {
 
@@ -30,7 +30,7 @@ class RedisClient {
     * @return the Redis value stored for this key
     */ 
     async get(key) {
-        await primisify(this.client.GET).bind(this.client)(key);
+        return promisify(this.client.GET).bind(this.client)(key);
     }
 
     /*
@@ -49,5 +49,5 @@ class RedisClient {
     }
 }
 
-export const redisClient = RedisClient();
+export const redisClient = new RedisClient();
 export default redisClient;
