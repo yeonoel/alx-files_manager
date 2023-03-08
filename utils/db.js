@@ -1,4 +1,3 @@
-import Collection from 'mongodb/lib/collection';
 import mongodb from 'mongodb';
 
 class DBClient {
@@ -17,7 +16,6 @@ class DBClient {
   isAlive() {
     return this.client.isConnected();
   }
-  
 
   async nbUsers() {
     return this.client.db().collection('users').countDocuments();
