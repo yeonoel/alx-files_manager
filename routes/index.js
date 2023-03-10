@@ -1,4 +1,4 @@
-import AppController from '../controllers/AppController'
+import AppController from '../controllers/AppController';
 
 const injectRoutes = (myApp) => {
   myApp.get('/status', AppController.getStatus);
