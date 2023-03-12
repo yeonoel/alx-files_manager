@@ -25,13 +25,13 @@ export const getUserFromAuthorization = async (req) => {
     return null;
   }
   return user;
-}
+};
 
 export const getUserFromXToken = async (req) => {
   const token = req.headers['x-token'];
 
   if (!token) {
-    return;
+    return null;
   }
   const userId = await redisClient.get(`auth_${token}`);
   if (!userId) {

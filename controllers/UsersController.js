@@ -16,6 +16,7 @@ export default class UsersController {
     }
     if (!password) {
       res.status(400).json({ error: 'Missing password' });
+      return;
     }
     const user = await (await dbClient.usersCollection()).findOne({ email });
 

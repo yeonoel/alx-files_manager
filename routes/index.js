@@ -9,9 +9,9 @@ const injectRoutes = (myApp) => {
 
   myApp.get('/connect', basicAuthenticate, AuthController.getConnect);
   myApp.get('/disconnect', xTokenAuthenticate, AuthController.getDisconnect);
-  myApp.get('users/me', xTokenAuthenticate, UsersController.getMe);
 
   myApp.post('/users', UsersController.postNew);
+  myApp.get('/users/me', xTokenAuthenticate, UsersController.getMe);
 };
 
 export default injectRoutes;
