@@ -15,16 +15,16 @@ const injectRoutes = (myApp) => {
   myApp.get('/users/me', xTokenAuthenticate, UsersController.getMe);
 
   myApp.post('/files', xTokenAuthenticate, FilesController.postUpload);
-  api.get('/files/:id', xTokenAuthenticate, FilesController.getShow);
-  api.get('/files', xTokenAuthenticate, FilesController.getIndex);
-  api.put('/files/:id/publish', xTokenAuthenticate, FilesController.putPublish);
-  api.put('/files/:id/unpublish', xTokenAuthenticate, FilesController.putUnpublish);
-  api.get('/files/:id/data', FilesController.getFile);
+  myApp.get('/files/:id', xTokenAuthenticate, FilesController.getShow);
+  myApp.get('/files', xTokenAuthenticate, FilesController.getIndex);
+  myApp.put('/files/:id/publish', xTokenAuthenticate, FilesController.putPublish);
+  myApp.put('/files/:id/unpublish', xTokenAuthenticate, FilesController.putUnpublish);
+  myApp.get('/files/:id/data', FilesController.getFile);
 
-  api.all('*', (req, res, next) => {
+  myApp.all('*', (req, res, next) => {
     errorResponse(new APIError(404, `Cannot ${req.method} ${req.url}`), req, res, next);
   });
-  api.use(errorResponse);
+  myApp.use(errorResponse);
 };
 
 export default injectRoutes;
